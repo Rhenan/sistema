@@ -8,11 +8,11 @@ class Aluno(models.Model):
     nome = models.CharField(max_length=100)
     sexo = models.CharField(max_length=1)
     nascimento = models.DateField()
-    pai = models.CharField()
-    mae = models.CharField()
+    pai = models.CharField(max_length=100)
+    mae = models.CharField(max_length=100)
     email = models.EmailField()
     telefone = models.CharField(max_length=10)
-    endereco = models.CharField()
+    endereco = models.CharField(max_length=300)
 
 class Coordenador(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -22,14 +22,14 @@ class Coordenador(models.Model):
     nascimento = models.DateField()
     email = models.EmailField()
     telefone = models.CharField(max_length=10)
-    endereco = models.CharField()
+    endereco = models.CharField(max_length=300)
 
 class Cursinho(models.Model):
     id = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=10)
-    endereco = models.CharField()
-    aluno_id = models.ManyToOneRel(Aluno.id)
-    coordenador_id = models.ManyToOneRel(Coordenador.id)
+    endereco = models.CharField(max_length=300)
+    aluno_id = models.ForeignKey(Aluno)
+    coordenador_id = models.ForeignKey(Coordenador)
 
 
